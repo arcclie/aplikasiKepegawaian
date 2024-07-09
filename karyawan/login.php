@@ -23,7 +23,7 @@ require 'fungsi/proses_log.php';
 <form action="" autocomplete="off" method="POST">
   <div class="wrap">
   	<h1 class="login_adm">Login Karyawan</h1>
-	  <br><center><p>Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a></p></center>
+	  <br><center><p> <a href='' title='' target='_blank'></a></p></center>
 	  
 		<div class="avatar">
       <img src="<?=url()?>images/employee2.png">
