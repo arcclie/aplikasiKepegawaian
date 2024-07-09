@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include_once 'sesi.php';
-$nama_app = " | Absensi Karyawan";
+$nama_app = "Aplikasi Kepegawaian";
 $modul =  (isset($_GET['m']))?$_GET['m']:"awal";
 switch ($modul) {
 	case 'awal': default: $judul = "Dashboard $nama_app"; include 'awal.php'; break;
