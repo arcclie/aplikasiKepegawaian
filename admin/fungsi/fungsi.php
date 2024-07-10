@@ -263,7 +263,7 @@ function hapus_keterangan()
 // ----------------------------------------FUNCTION URL, KEEP IT BELOW!!------------------------------------------------------------------
 function url()
 {
-	return $url = "//localhost/absenKaryawan/assets/";
+	return $url = "//localhost/aplikasiKepegawaian/assets/";
 
 }
 
