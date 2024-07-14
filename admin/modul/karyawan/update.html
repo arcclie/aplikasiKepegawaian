@@ -1,0 +1,16 @@
+<form method="POST" action="update.php" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="<?php echo $karyawan['id']; ?>">
+	<input type="text" name="nip" value="<?php echo $karyawan['nip']; ?>">
+	<input type="text" name="username" value="<?php echo $karyawan['username']; ?>">
+	<input type="password" name="password">
+	<input type="text" name="nama" value="<?php echo $karyawan['nama']; ?>">
+	<input type="text" name="tempat_lahir" value="<?php echo $karyawan['tempat_lahir']; ?>">
+	<input type="date" name="tanggal_lahir" value="<?php echo $karyawan['tanggal_lahir']; ?>">
+	<input type="text" name="alamat" value="<?php echo $karyawan['alamat']; ?>">
+	<input type="text" name="kontak" value="<?php echo $karyawan['kontak']; ?>">
+	<input type="file" name="foto">
+	<label for="ubahfoto">
+		<input type="checkbox" name="ubahfoto" id="ubahfoto"> Ubah Foto
+	</label>
+	<button type="submit" name="update">Update</button>
+</form>
