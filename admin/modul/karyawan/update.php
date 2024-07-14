@@ -1,40 +1,73 @@
 <?php 
 
 $koneksi = mysqli_connect('localhost', 'root', '', 'absenkaryawan');
-$id = $_GET['id'];
-$nama_baru = $_POST['nama']; // Assuming the new name is coming from a POST request
-$foto_baru = $_FILES['foto']['name']; // Assuming the new photo is coming from a file upload
 
-$select = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE id='$id'");
-$row = mysqli_fetch_array($select);
-$hapus_foto = $row['foto'];
+if (isset($_POST['update'])) {
+	$id = $_POST['id'];
+	$nip = $_POST['nip'];
+	$username = $_POST['username'];
+	$password = md5($_POST['password']);
+	$nama = $_POST['nama'];
+	$tempat_lahir = $_POST['tempat_lahir'];
+	$tanggal_lahir = $_POST['tanggal_lahir'];
+	$alamat = $_POST['alamat'];
+	$kontak = $_POST['kontak'];
+	$foto = $_FILES['foto']['name'];
 
-// Upload the new photo if a new one is provided
-if ($foto_baru != "") {
-    $target_dir = "img/karyawan/";
-    $target_file = $target_dir . basename($foto_baru);
+	// unlink 
+	$select = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE id='$id'");
+	$row = mysqli_fetch_array($select);
 
-    // Check if file upload is successful
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)) {
-        // Delete the old photo if it exists
-        if ($hapus_foto != "") {
-            unlink("img/karyawan/$hapus_foto");
-        }
-        $foto_baru = $target_file;
-    } else {
-        $foto_baru = $hapus_foto; // If upload fails, retain the old photo
-    }
-} else {
-    $foto_baru = $hapus_foto; // If no new photo, retain the old photo
-}
+	$hapus_foto = $row['foto'];
 
-// Update the record
-$query = mysqli_query($koneksi, "UPDATE tb_karyawan SET nama='$nama_baru', foto='$foto_baru' WHERE id='$id'");
+	if(isset($_POST['ubahfoto']))
+	{
+		if ($row['foto']=="") 
+		{
+			if ($foto != "") {
+				$allowed_ext = array('png','jpg');
+				$x = explode(".", $foto);
+				$ekstensi = strtolower(end($x));
+				$file_tmp = $_FILES['foto']['tmp_name'];
+				$angka_acak = rand(1,999);
+		   		$nama_file_baru = $angka_acak.'-'.$foto;
+		   		if (in_array($ekstensi, $allowed_ext) === true) {
+		      		move_uploaded_file($file_tmp, 'img/karyawan/'.$nama_file_baru);
+		      		$result =  mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
+		      		if ($result) {
+		      			echo '<script>window.history.back()</script>';
+		      			echo "<meta http-equiv='refresh' content='0'>";
+		      		}
+		   		}
+			}
+		} else if ($row['foto']!="") {
+			if ($foto != "") {
+				$allowed_ext = array('png','jpg');
+				$x = explode(".", $foto);
+				$ekstensi = strtolower(end($x));
+				$file_tmp = $_FILES['foto']['tmp_name'];
+				$angka_acak = rand(1,999);
+		   		$nama_file_baru = $angka_acak.'-'.$foto;
+		   		if (in_array($ekstensi, $allowed_ext) === true) {
+		      		move_uploaded_file($file_tmp, 'img/karyawan/'.$nama_file_baru);
+		      		$result =  mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
+		      		if ($result) {
+		      			unlink("img/karyawan/$hapus_foto");
+		      			echo '<script>window.history.back()</script>';
+		      			echo "<meta http-equiv='refresh' content='0'>";
+		      		}
+		   		}
+			}
+		}	
+	}
 
-if ($query) {
-    echo '<script>window.history.back()</script>';
-    echo "<meta http-equiv='refresh' content='0'>";
+	if (empty($_POST['foto'])) {
+		$result = mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak' WHERE id='$id'");
+		if ($result) {
+			echo '<script>window.history.back()</script>';
+			echo "<meta http-equiv='refresh' content='0'>";
+		}
+	}
 }
 
 ?>
-i
