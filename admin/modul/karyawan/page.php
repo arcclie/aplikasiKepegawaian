@@ -1,3 +1,4 @@
+<title>Aplikasi Absensi Karyawan</title>
 <?php include 'comp/header.php'; ?>
 <?php 
 
