@@ -4,8 +4,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> Zibran. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>. | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
-                                </p>
+                               
                             </div>
                         </div>
                     </div>
