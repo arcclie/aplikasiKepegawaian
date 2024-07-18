@@ -221,6 +221,12 @@ ALTER TABLE `tb_admin`
 ALTER TABLE `tb_karyawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
+  --
+-- AUTO_INCREMENT for table `tb_slip_gaji`
+--
+ALTER TABLE `tb_slip_gaji`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tb_keterangan`
 --
