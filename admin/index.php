@@ -11,6 +11,7 @@ switch ($modul) {
 	case 'absen': $judul = "Data Absen $nama_app"; include 'modul/absen/index.php'; break;
 	case 'setting': $judul = "Pengaturan $nama_app;"; include 'modul/pengaturan/page.php'; break;
 	case 'keterangan': $judul = "Data keterangan $nama_app"; include 'modul/keterangan/page.php'; break;
+	case 'gaji': $judul = "gaji $nama_app"; include 'modul/gaji/page.php'; break;
 	
 }
 
