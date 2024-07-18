@@ -62,36 +62,13 @@
                 </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="index.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard
-                             <!--    <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span> -->
-                            </a>
-                           <!--  <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">
-                                        <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">
-                                        <i class="fas fa-tachometer-alt"></i>Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">
-                                        <i class="fas fa-tachometer-alt"></i>Dashboard 4</a>
-                                </li>
-                            </ul> -->
+                        <li>
+                            <a href="index.php">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="index.php?m=admin&s=awal">
                                 <i class="fas fa-user"></i>Data Admin</a>
-                            
                         </li>
                         <li>
                             <a href="index.php?m=karyawan&s=awal">
@@ -106,9 +83,7 @@
                         <li class="has-sub sm-10">
                             <a class="js-arrow" href="index.php?m=keterangan">
                                 <i class="fas fa-copy"></i>Data Keterangan
-                                
                             </a>
-                   
                         </li>
                        
                     </ul>
