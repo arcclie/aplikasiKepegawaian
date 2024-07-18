@@ -26,8 +26,6 @@ if (isset($_POST['hapus'])) {
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Karyawan</li>
             </ol>
           </div><!-- /.col -->
         </div>
@@ -94,7 +92,7 @@ if (isset($_POST['hapus'])) {
           <input type="file" class="form-control" name="foto">
         </div>
         <div class="modal-footer">
-        <button type="submit" name="simpan" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="simpan" class="btn btn-primary">Save</button>
         <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -123,14 +121,7 @@ if (isset($_POST['hapus'])) {
                                                 
                                             </tr>
                                         </thead>
-                                        <?php 
-                           
-
-                                            $i = 1;
-                                            
-                                         ?>
                                         <tbody>
-                                            <?php include 'paging.php'; ?>
 										</tbody>
                                     </table> -->
                                         <table class="table table-striped table-earning">
