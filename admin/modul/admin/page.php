@@ -223,8 +223,13 @@ if (isset($_POST['update'])) {
 <?php include 'comp/footer.php'; ?>
 
 <?php
-// Fungsi untuk update data admin
+// Include the file that contains the database connection
+include 'koneksi.php';
+
+// Function to update admin data
 function update_admin() {
+  global $koneksi; // Use the global variable $koneksi
+
   $id = $_POST['id'];
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -243,12 +248,12 @@ function update_admin() {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
       move_uploaded_file($file_tmp, 'img/'.$nama_gambar_baru);
 
-      // Query update data
+      // Query to update data
       $query = "UPDATE admin SET username = '$username', password = '$password', nama = '$nama', kontak = '$kontak', foto = '$nama_gambar_baru' WHERE id = '$id'";
       $result = mysqli_query($koneksi, $query);
 
       if (!$result) {
-        die("Query gagal dijalankan: ".mysqli_errno($koneksi)." - ".mysqli_error($koneksi));
+        die("Query gagal dijalankan: ".mysqli_error($koneksi)." - ".mysqli_error($koneksi));
       }
     } else {
       echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='index.php';</script>";

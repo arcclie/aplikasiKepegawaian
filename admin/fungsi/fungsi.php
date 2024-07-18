@@ -72,54 +72,48 @@ function edit_admin()
 	global $koneksi;
 	$id = $_POST['id'];
 	$username = $_POST['username'];
-	$password = md5($_POST['password']);
 	$nama = $_POST['nama'];
 	$kontak = $_POST['kontak'];
 	$foto = $_FILES['foto']['name'];
 
-	// unlink 
+	// Mengambil data lama
 	$sql = mysqli_query($koneksi, "SELECT * FROM tb_admin WHERE id='$id'");
 	$r = mysqli_fetch_array($sql);
 
 	$hapus_foto = $r['foto'];
 
-	if(isset($_POST['ubahfoto']))
-	{
-		if ($r['foto']=="") 
-		{
-			if ($foto != "") {
-				$allowed_ext = array('png','jpg');
-				$x = explode(".", $foto);
-				$ekstensi = strtolower(end($x));
-				$file_tmp = $_FILES['foto']['tmp_name'];
-				$angka_acak = rand(1,999);
-		   		$nama_file_baru = $angka_acak.'-'.$foto;
-		   		if (in_array($ekstensi, $allowed_ext) === true) {
-		      		move_uploaded_file($file_tmp, 'img/'.$nama_file_baru);
-		      		$result =  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
-		   		}
-			}
-		} else if ($r['foto']!="") {
-			if ($foto != "") {
-				$allowed_ext = array('png','jpg');
-				$x = explode(".", $foto);
-				$ekstensi = strtolower(end($x));
-				$file_tmp = $_FILES['foto']['tmp_name'];
-				$angka_acak = rand(1,999);
-		   		$nama_file_baru = $angka_acak.'-'.$foto;
-		   		if (in_array($ekstensi, $allowed_ext) === true) {
-		      		move_uploaded_file($file_tmp, 'img/'.$nama_file_baru);
-		      		$result =  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
-		      		if ($result) {
-		      			unlink("img/$hapus_foto");
-		      		}
-		   		}
-			}
-		}	
+	// Jika password tidak diubah, gunakan password lama
+	if (empty($_POST['password'])) {
+		$password = $r['password'];
+	} else {
+		$password = md5($_POST['password']);
 	}
 
-	if (empty($_POST['foto'])) {
-		return  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak' WHERE id='$id'");
+	if (isset($_POST['ubahfoto']) && $foto != "") {
+		$allowed_ext = array('png', 'jpg');
+		$x = explode(".", $foto);
+		$ekstensi = strtolower(end($x));
+		$file_tmp = $_FILES['foto']['tmp_name'];
+		$angka_acak = rand(1, 999);
+		$nama_file_baru = $angka_acak . '-' . $foto;
+
+		if (in_array($ekstensi, $allowed_ext) === true) {
+			move_uploaded_file($file_tmp, 'img/' . $nama_file_baru);
+
+			$result = mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
+
+			if ($result && $r['foto'] != "") {
+				unlink("img/$hapus_foto");
+			}
+		}
+	} else {
+		$result = mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak' WHERE id='$id'");
+	}
+	
+	if ($result) {
+		echo '<script>alert("Data admin berhasil diupdate!")</script>';
+	} else {
+		echo '<script>alert("Gagal mengupdate data admin!")</script>';
 	}
 }
 
