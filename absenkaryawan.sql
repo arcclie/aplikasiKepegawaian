@@ -155,6 +155,7 @@ CREATE TABLE `tb_keterangan` (
 -- Indexes for dumped tables
 --
 
+
 --
 -- Indexes for table `jam_masuk`
 --
@@ -184,6 +185,13 @@ ALTER TABLE `tb_karyawan`
 --
 ALTER TABLE `tb_keterangan`
   ADD PRIMARY KEY (`id`);
+
+  --
+-- Indexes for table `tb_slip_gaji`
+--
+ALTER TABLE `tb_slip_gaji`
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
