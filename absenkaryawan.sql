@@ -34,8 +34,11 @@ CREATE TABLE `jam_masuk` (
 
 --
 -- Dumping data for table `jam_masuk`
-
 --
+
+INSERT INTO `jam_masuk` (`id`, `jam_masuk`) VALUES
+(1, '0800');
+
 -- Table structure for table `tb_slip_gaji`
 --
 
@@ -51,10 +54,13 @@ CREATE TABLE `tb_slip_gaji` (
   `total_gaji` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_slip_gaji`
+--
 
-
-INSERT INTO `jam_masuk` (`id`, `jam_masuk`) VALUES
-(1, '0800');
+INSERT INTO `tb_slip_gaji` (`id`, `nip`, `nama`, `bulan`, `tahun`, `gaji_pokok`, `tunjangan`, `potongan`, `total_gaji`) VALUES
+(1, '191202191202', 'Muhammad Zibran', 'Desember', 2020, 5000000.00, 1000000.00, 500000.00, 5500000.00),
+(2, '28938932', 'karyawan', 'Desember', 2020, 4000000.00, 800000.00, 300000.00, 4500000.00);
 
 -- --------------------------------------------------------
 
