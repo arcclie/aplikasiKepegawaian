@@ -187,22 +187,21 @@ function select_karyawan_2()
 	echo $r['jkaryawan'];
 }
 
-function update_karyawan()
+function edit_karyawan()
 {
 	global $koneksi;
 	$id = $_POST['id'];
-	$nip = $_POST['nip'];
 	$username = $_POST['username'];
 	$password = md5($_POST['password']);
-	$nama = $_POST['nama'];
 	$tempat_lahir = $_POST['tempat_lahir'];
 	$tanggal_lahir = $_POST['tanggal_lahir'];
 	$alamat = $_POST['alamat'];
+	$nama = $_POST['nama'];
 	$kontak = $_POST['kontak'];
 	$foto = $_FILES['foto']['name'];
 
 	// unlink 
-	$sql = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE id='$id'");
+	$sql = mysqli_query($koneksi, "SELECT * FROM tb_admin WHERE id='$id'");
 	$r = mysqli_fetch_array($sql);
 
 	$hapus_foto = $r['foto'];
@@ -219,8 +218,8 @@ function update_karyawan()
 				$angka_acak = rand(1,999);
 		   		$nama_file_baru = $angka_acak.'-'.$foto;
 		   		if (in_array($ekstensi, $allowed_ext) === true) {
-		      		move_uploaded_file($file_tmp, 'img/karyawan/'.$nama_file_baru);
-		      		$result =  mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
+		      		move_uploaded_file($file_tmp, 'img/'.$nama_file_baru);
+		      		$result =  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
 		   		}
 			}
 		} else if ($r['foto']!="") {
@@ -232,10 +231,10 @@ function update_karyawan()
 				$angka_acak = rand(1,999);
 		   		$nama_file_baru = $angka_acak.'-'.$foto;
 		   		if (in_array($ekstensi, $allowed_ext) === true) {
-		      		move_uploaded_file($file_tmp, 'img/karyawan/'.$nama_file_baru);
-		      		$result =  mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
+		      		move_uploaded_file($file_tmp, 'img/'.$nama_file_baru);
+		      		$result =  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak', foto='$nama_file_baru' WHERE id='$id'");
 		      		if ($result) {
-		      			unlink("img/karyawan/$hapus_foto");
+		      			unlink("img/$hapus_foto");
 		      		}
 		   		}
 			}
@@ -243,7 +242,7 @@ function update_karyawan()
 	}
 
 	if (empty($_POST['foto'])) {
-		return  mysqli_query($koneksi, "UPDATE tb_karyawan SET nip='$nip', username='$username', password='$password', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kontak='$kontak' WHERE id='$id'");
+		return  mysqli_query($koneksi, "UPDATE tb_admin SET username='$username', password='$password', nama='$nama', kontak='$kontak' WHERE id='$id'");
 	}
 }
 
