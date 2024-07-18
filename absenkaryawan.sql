@@ -34,7 +34,24 @@ CREATE TABLE `jam_masuk` (
 
 --
 -- Dumping data for table `jam_masuk`
+
 --
+-- Table structure for table `tb_slip_gaji`
+--
+
+CREATE TABLE `tb_slip_gaji` (
+  `id` int(11) NOT NULL,
+  `nip` text NOT NULL,
+  `nama` text NOT NULL,
+  `bulan` text NOT NULL,
+  `tahun` int(4) NOT NULL,
+  `gaji_pokok` decimal(10,2) NOT NULL,
+  `tunjangan` decimal(10,2) NOT NULL,
+  `potongan` decimal(10,2) NOT NULL,
+  `total_gaji` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 INSERT INTO `jam_masuk` (`id`, `jam_masuk`) VALUES
 (1, '0800');
