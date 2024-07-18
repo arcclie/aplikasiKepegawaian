@@ -32,6 +32,6 @@ class login_web
 }
 
 $pro = new login_web();
-$pro->koneksi = mysqli_connect('localhost', 'root', '', 'absenKaryawan');
+$pro->koneksi = mysqli_connect('localhost', 'root', '', 'absenkaryawan');
 
  ?>

@@ -224,7 +224,7 @@ if (isset($_POST['update'])) {
 
 <?php
 // Include the file that contains the database connection
-include 'koneksi.php';
+
 
 // Function to update admin data
 function update_admin() {
