@@ -14,7 +14,7 @@
 	<div class="content-header">
 		 <div class="row mb-2">
           <div class="col-sm-6">
-           <h3 class="col-sm-6">Data Absen</h3>
+           <h3 class="col-sm-6">Keterangan</h3>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
